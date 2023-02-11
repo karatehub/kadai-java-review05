@@ -35,10 +35,10 @@ public class Review05 {
             pstmt = con.prepareStatement(sql);
             // 5,6 Select文の実行と結果を格納/代入
             System.out.print("検索キーワードを入力してください　＞"); // ←　追記
-            String input = keyIn();   // ←　追記
+            int input = keyInNum();   // ←　追記
             
             // PreparedStatementオブジェクトの？に値をセット　// ←　追記
-            pstmt.setString(1, input); // ←　追記
+            pstmt.setInt(1, input); // ←　追記
             rs = pstmt.executeQuery();
             // 7. 結果を表示する
             while (rs.next() ) {
@@ -99,5 +99,15 @@ public class Review05 {
             
         }
         return line;
+    }
+    
+    private static int keyInNum() {
+        int result = 0;
+        try {
+            result = Integer.parseInt(keyIn());
+        }catch (NumberFormatException e) {
+            
+        }
+        return result;
     }
 }
